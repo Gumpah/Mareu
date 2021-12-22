@@ -176,9 +176,15 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
             onSubmit();
         }
         if (v == binding.buttonAddparticipant) {
-            mParticipants.add(binding.textFieldAddparticipant.getEditText().getText().toString());
-            binding.textFieldAddparticipant.getEditText().getText().clear();
-            initRecyclerView();
+            if (binding.textFieldAddparticipant.getEditText().getText().toString().isEmpty()) {
+                binding.textFieldAddparticipant.setError("Une adresse mail ne peut pas être vide");
+            } else if (binding.textFieldAddparticipant.getEditText().getText().toString().contains(" ")) {
+                binding.textFieldAddparticipant.setError("Une adresse mail ne peut pas contenir d'espaces");
+            } else {
+                mParticipants.add(binding.textFieldAddparticipant.getEditText().getText().toString());
+                binding.textFieldAddparticipant.getEditText().getText().clear();
+                initRecyclerView();
+            }
         }
         if (v == binding.textButtonDatepicker) {
             dateDialog();

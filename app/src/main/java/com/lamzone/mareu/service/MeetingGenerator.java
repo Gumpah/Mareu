@@ -19,16 +19,16 @@ public abstract class MeetingGenerator {
             "koelpin.cordelia@langosh.info");
 
     public static List<Meeting> meetings = Arrays.asList(
-            new Meeting("Réunion A", "3", 15, 30, maillist, ColorUtils.HSLToColor(new float[]{225,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion B", "4", 10, 0, maillist, ColorUtils.HSLToColor(new float[]{150,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion C", "6", 16, 0, maillist, ColorUtils.HSLToColor(new float[]{240,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion D", "2", 14, 0, maillist, ColorUtils.HSLToColor(new float[]{210,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion E", "3", 9, 30, maillist, ColorUtils.HSLToColor(new float[]{135,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion F", "1", 15, 30, maillist, ColorUtils.HSLToColor(new float[]{225,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion G", "5", 11, 0, maillist, ColorUtils.HSLToColor(new float[]{165,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion H", "3", 11, 30, maillist, ColorUtils.HSLToColor(new float[]{165,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion I", "4", 10, 0, maillist, ColorUtils.HSLToColor(new float[]{150,0.25f,0.75f}), Calendar.getInstance().getTime()),
-            new Meeting("Réunion J", "6", 13, 30, maillist, ColorUtils.HSLToColor(new float[]{195,0.25f,0.75f}), Calendar.getInstance().getTime())
+            new Meeting("Réunion A", "3", 15, 30, maillist, -5261361, Calendar.getInstance().getTime()),
+            new Meeting("Réunion B", "4", 10, 0, maillist, -5255233, Calendar.getInstance().getTime()),
+            new Meeting("Réunion C", "6", 16, 0, maillist, -5263409, Calendar.getInstance().getTime()),
+            new Meeting("Réunion D", "2", 14, 0, maillist, -5259313, Calendar.getInstance().getTime()),
+            new Meeting("Réunion E", "3", 9, 30, maillist, -5255241, Calendar.getInstance().getTime()),
+            new Meeting("Réunion F", "1", 15, 30, maillist, -5261361, Calendar.getInstance().getTime()),
+            new Meeting("Réunion G", "5", 11, 0, maillist, -5255225, Calendar.getInstance().getTime()),
+            new Meeting("Réunion H", "3", 11, 30, maillist, -5255225, Calendar.getInstance().getTime()),
+            new Meeting("Réunion I", "4", 10, 0, maillist, -5255233, Calendar.getInstance().getTime()),
+            new Meeting("Réunion J", "6", 13, 30, maillist, -5257265, Calendar.getInstance().getTime())
     );
 
     public static List<String> rooms = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");

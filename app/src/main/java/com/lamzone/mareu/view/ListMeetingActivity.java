@@ -107,7 +107,7 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
                 Calendar cal = Calendar.getInstance();
                 cal.set(year, month, dayOfMonth);
                 mMeetingList.clear();
-                mMeetingList.addAll(mApiService.getMeetingsDateFilter(cal.getTime()));
+                mMeetingList.addAll(mApiService.getMeetingsDateFilter(cal.getTime(), mApiService.getMeetings()));
                 dataChange();
             }
         };
@@ -141,7 +141,7 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
 
     private void filterByPlace(String room) {
         mMeetingList.clear();
-        mMeetingList.addAll(mApiService.getMeetingsRoomFilter(room));
+        mMeetingList.addAll(mApiService.getMeetingsRoomFilter(room, mApiService.getMeetings()));
         dataChange();
     }
 

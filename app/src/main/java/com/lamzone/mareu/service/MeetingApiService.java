@@ -35,7 +35,7 @@ public class MeetingApiService implements MeetingApiServiceInterface {
     }
 
     @Override
-    public List<Meeting> getMeetingsDateFilter(Date date) {
+    public List<Meeting> getMeetingsDateFilter(Date date, List<Meeting> meetings) {
         List<Meeting> list_filtered = new ArrayList<>();
 
         Calendar cal_filter = Calendar.getInstance();
@@ -51,7 +51,7 @@ public class MeetingApiService implements MeetingApiServiceInterface {
     }
 
     @Override
-    public List<Meeting> getMeetingsRoomFilter(String room) {
+    public List<Meeting> getMeetingsRoomFilter(String room, List<Meeting> meetings) {
         List<Meeting> list_filtered = new ArrayList<>();
         for (int i = 0; i < meetings.size(); i++) {
             if (meetings.get(i).getRoom().equals(room)) list_filtered.add(meetings.get(i));
