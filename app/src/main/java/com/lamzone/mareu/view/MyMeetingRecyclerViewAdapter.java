@@ -2,6 +2,7 @@ package com.lamzone.mareu.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.lamzone.mareu.model.Meeting;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
@@ -39,7 +41,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     }
 
     @Override
-    public void onBindViewHolder(MyMeetingRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.displayMeeting(mMeetings.get(position));
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,15 +81,16 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
             mymeeting = meeting;
             firstline.setText(getFirstLine(meeting));
             secondline.setText(getSecondLine(meeting));
+            mImageView.setColorFilter(meeting.getColor());
         }
 
         public String getFirstLine(Meeting meeting) {
-            String firstLine = meeting.getName() + " - " + meeting.getHours() + "h" + meeting.getMinutes() + " - " + meeting.getRoom();
+            String firstLine = meeting.getName() + " - " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + meeting.getRoom();
             return firstLine;
         }
 
         public String getSecondLine(Meeting meeting) {
-            String secondLine = meeting.getParticipants().toString();
+            String secondLine = TextUtils.join(", ", meeting.getParticipants());
             return secondLine;
         }
     }

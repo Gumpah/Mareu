@@ -15,12 +15,15 @@ public class Meeting {
 
     private List<String> participants;
 
-    public Meeting(String name, String room, int hours, int minutes) {
+    private int color;
+
+    public Meeting(String name, String room, int hours, int minutes, List<String> participants, int color) {
         this.name = name;
         this.room = room;
         this.hours = hours;
         this.minutes = minutes;
-        this.participants = Arrays.asList("Test","Test","Test","Test","Test","Test");
+        this.participants = participants;
+        this.color = color;
     }
 
     public String getName() {
@@ -55,12 +58,20 @@ public class Meeting {
         this.minutes = minutes;
     }
 
-    public void addParticipant(String participant) {
-        this.participants.add(participant);
-    }
-
     public List<String> getParticipants() {
         return participants;
+    }
+
+    public void setParticipants(List<String> participants) {
+        this.participants = participants;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
 }

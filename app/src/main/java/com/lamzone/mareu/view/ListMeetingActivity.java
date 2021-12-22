@@ -12,8 +12,12 @@ import com.lamzone.mareu.R;
 import com.lamzone.mareu.databinding.ActivityAddMeetingBinding;
 import com.lamzone.mareu.databinding.ActivityListMeetingBinding;
 import com.lamzone.mareu.di.DI;
+import com.lamzone.mareu.events.DeleteMeetingEvent;
 import com.lamzone.mareu.model.Meeting;
 import com.lamzone.mareu.service.MeetingApiServiceInterface;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -27,7 +31,6 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
         binding = ActivityListMeetingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        initData();
         setButton();
         initRecyclerView();
     }
@@ -42,10 +45,10 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerview.setLayoutManager(layoutManager);
         MyMeetingRecyclerViewAdapter myMeetingRecyclerViewAdapter = new MyMeetingRecyclerViewAdapter(mMeetingList, this);
+        binding.recyclerview.setAdapter(myMeetingRecyclerViewAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.recyclerview.getContext(),
                 layoutManager.getOrientation());
         binding.recyclerview.addItemDecoration(dividerItemDecoration);
-        binding.recyclerview.setAdapter(myMeetingRecyclerViewAdapter);
     }
 
     @Override
@@ -56,9 +59,35 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+        initUI();
+    }
+
+    @Override
     public void onClick(View v) {
         if (v == binding.ButtonNewmeeting) {
             startActivity(new Intent(this, AddMeetingActivity.class));
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Subscribe
+    public void onDeleteMeeting(DeleteMeetingEvent event) {
+        mApiService.deleteMeeting(event.meeting);
+        initData();
+        initUI();
     }
 }

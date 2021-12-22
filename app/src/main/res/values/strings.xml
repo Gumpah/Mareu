@@ -5,6 +5,5 @@
     <string name="time_define">Définir l\'heure</string>
     <string name="create_meeting">Créer</string>
     <string name="addmeeting_title">Créer une réunion</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addparticipant">Entrer une adresse mail</string>
 </resources>
