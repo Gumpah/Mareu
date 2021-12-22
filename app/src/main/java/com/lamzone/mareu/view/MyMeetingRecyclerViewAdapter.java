@@ -47,7 +47,6 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
             @Override
             public void onClick(View v) {
                 if (v == holder.delete) {
-                    System.out.println("test");
                     EventBus.getDefault().post(new DeleteMeetingEvent(mMeetings.get(position)));
                 }
             }
