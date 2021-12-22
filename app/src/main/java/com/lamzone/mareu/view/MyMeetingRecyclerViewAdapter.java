@@ -20,6 +20,8 @@ import com.lamzone.mareu.model.Meeting;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -84,7 +86,8 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         }
 
         public String getFirstLine(Meeting meeting) {
-            String firstLine = meeting.getName() + " - " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + "Salle " + meeting.getRoom();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
+            String firstLine = meeting.getName() + " - " + dateFormat.format(meeting.getDate()) + " " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + "Salle " + meeting.getRoom();
             return firstLine;
         }
 
