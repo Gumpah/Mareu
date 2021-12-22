@@ -85,7 +85,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         }
 
         public String getFirstLine(Meeting meeting) {
-            String firstLine = meeting.getName() + " - " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + meeting.getRoom();
+            String firstLine = meeting.getName() + " - " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + "Salle " + meeting.getRoom();
             return firstLine;
         }
 

@@ -16,6 +16,7 @@
         <item name="android:actionBarTheme" tools:targetApi="l">@style/MyActionBar</item>
         <item name="android:titleTextStyle">@style/MyActionBar</item>
         <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
     </style>
     <style name="MyActionBar" parent="Widget.AppCompat.Light.ActionBar" >>
         <item name="android:background">@color/blue</item>

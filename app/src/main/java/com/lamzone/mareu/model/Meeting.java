@@ -1,6 +1,7 @@
 package com.lamzone.mareu.model;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Meeting {
@@ -17,13 +18,16 @@ public class Meeting {
 
     private int color;
 
-    public Meeting(String name, String room, int hours, int minutes, List<String> participants, int color) {
+    private Date date;
+
+    public Meeting(String name, String room, int hours, int minutes, List<String> participants, int color, Date date) {
         this.name = name;
         this.room = room;
         this.hours = hours;
         this.minutes = minutes;
         this.participants = participants;
         this.color = color;
+        this.date = date;
     }
 
     public String getName() {
@@ -72,6 +76,14 @@ public class Meeting {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }

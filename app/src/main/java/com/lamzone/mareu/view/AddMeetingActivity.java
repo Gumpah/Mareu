@@ -5,12 +5,15 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.google.android.material.timepicker.MaterialTimePicker;
@@ -27,7 +30,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,6 +44,8 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     private int hours = 12;
     private int minutes = 0;
     private List<String> mParticipants = new ArrayList<>();
+    private String room;
+    private Date date = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +92,10 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         binding.textButtonTimepicker.setText(String.format(Locale.getDefault(), "%02d:%02d", hours, minutes));
         setTimePicker();
+        setDateButton();
         setButtonCreate();
         setButtonAddParticipant();
+        setRoomMenu(mApiService.getRooms());
         initRecyclerView();
     }
 
@@ -94,9 +104,6 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         binding.recyclerviewParticipant.setLayoutManager(layoutManager);
         ParticipantsRecyclerViewAdapter ParticipantsRecyclerViewAdapter = new ParticipantsRecyclerViewAdapter(mParticipants, this);
         binding.recyclerviewParticipant.setAdapter(ParticipantsRecyclerViewAdapter);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.recyclerviewParticipant.getContext(),
-                layoutManager.getOrientation());
-        binding.recyclerviewParticipant.addItemDecoration(dividerItemDecoration);
     }
 
     private void setButtonCreate() {
@@ -109,17 +116,25 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
 
     private void onSubmit() {
         String name = binding.textFieldName.getEditText().getText().toString();
-        String room = binding.textFieldRoom.getEditText().getText().toString();
+        room = binding.textviewChooseroom.getText().toString();
 
         if (name.isEmpty()) {
             binding.textFieldName.setError("Veuillez entrer le nom de la réunion");
             return;
         }
         if (room.isEmpty()) {
-            binding.textFieldRoom.setError("Veuillez entrer un lieu");
+            binding.menuChooseroom.setError("Veuillez choisir un lieu");
             return;
         }
-        mApiService.createMeeting(new Meeting(name,room,hours,minutes, mParticipants, generateColor(hours)));
+        if (mParticipants.isEmpty()) {
+            binding.textFieldAddparticipant.setError("Au moins un participant requis");
+            return;
+        }
+        if (date == null) {
+            Toast.makeText(this, "Veuillez sélectionner une date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mApiService.createMeeting(new Meeting(name,room,hours,minutes, mParticipants, generateColor(hours), date));
         Toast.makeText(this, "Réunion créée", Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -130,6 +145,31 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         return color;
     }
 
+    private void setDateButton() {
+        binding.textButtonDatepicker.setOnClickListener(this);
+    }
+
+    private void dateDialog() {
+        int selectedYear = Calendar.getInstance().get(Calendar.YEAR);
+        int selectedMonth = Calendar.getInstance().get(Calendar.MONTH);
+        int selectedDayOfMonth = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar cal = Calendar.getInstance();
+                cal.set(year, month, dayOfMonth);
+                date = cal.getTime();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
+                binding.textButtonDatepicker.setText(dateFormat.format(date));
+            }
+        };
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog,
+                dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+
+        datePickerDialog.show();
+    }
+
     @Override
     public void onClick(View v) {
         if (v == binding.ButtonCreate) {
@@ -138,8 +178,16 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         if (v == binding.buttonAddparticipant) {
             mParticipants.add(binding.textFieldAddparticipant.getEditText().getText().toString());
             binding.textFieldAddparticipant.getEditText().getText().clear();
-            initUI();
+            initRecyclerView();
         }
+        if (v == binding.textButtonDatepicker) {
+            dateDialog();
+        }
+    }
+
+    private void setRoomMenu(List<String> list) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, list);
+        binding.textviewChooseroom.setAdapter(adapter);
     }
 
     @Override
@@ -174,6 +222,6 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     @Subscribe
     public void onRemoveParticipant(DeleteParticipantEvent event) {
         mParticipants.remove(event.index);
-        initUI();
+        initRecyclerView();
     }
 }

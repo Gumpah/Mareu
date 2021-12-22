@@ -27,19 +27,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_room"
+        android:id="@+id/menu_chooseroom"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/room"
         app:layout_constraintTop_toBottomOf="@id/textField_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
-        android:hint="@string/room"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:textColor="@color/grey">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
+            android:id="@+id/textview_chooseroom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:textColor="@color/grey"
             />
 
@@ -49,20 +52,34 @@
         android:id="@+id/textButton_timepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textField_room"
+        app:layout_constraintTop_toBottomOf="@id/menu_chooseroom"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textButton_datepicker"
+        android:layout_margin="8dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@string/time_define"
+        />
+
+    <Button
+        android:id="@+id/textButton_datepicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/menu_chooseroom"
+        app:layout_constraintStart_toEndOf="@id/textButton_timepicker"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
-        android:text="@string/time_define"
-        app:icon="@drawable/ic_baseline_access_time_24"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@string/date_define"
         />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField_addparticipant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="4dp"
         android:hint="@string/addparticipant"
         app:layout_constraintTop_toBottomOf="@id/textButton_timepicker"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +87,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textinput_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
@@ -92,7 +110,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_participant"
         android:layout_width="300dp"
-        android:layout_height="360dp"
+        android:layout_height="332dp"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/textField_addparticipant"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,15 +122,17 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/recyclerview_participant"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:enabled="true"
+        android:textSize="18sp"
         android:layout_gravity="center"
         app:cornerRadius="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/white"
-        android:text="@string/create_meeting"/>
+        android:text="@string/create_meeting"
+        android:padding="12dp"/>
 
 
 

@@ -3,7 +3,11 @@
     <string name="name">Nom de la réunion</string>
     <string name="room">Lieu</string>
     <string name="time_define">Définir l\'heure</string>
+    <string name="date_define">Définir la date</string>
     <string name="create_meeting">Créer</string>
     <string name="addmeeting_title">Créer une réunion</string>
     <string name="addparticipant">Entrer une adresse mail</string>
+    <string name="filtrer_date">Filtrer par date</string>
+    <string name="filtrer_place">Filtrer par salle</string>
+    <string name="remove_filter">Enlever le filtre</string>
 </resources>
