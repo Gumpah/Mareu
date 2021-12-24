@@ -2,13 +2,9 @@ package com.lamzone.mareu.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.ColorUtils;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +17,6 @@ import com.google.android.material.timepicker.TimeFormat;
 import com.lamzone.mareu.R;
 import com.lamzone.mareu.databinding.ActivityAddMeetingBinding;
 import com.lamzone.mareu.di.DI;
-import com.lamzone.mareu.events.DeleteMeetingEvent;
 import com.lamzone.mareu.events.DeleteParticipantEvent;
 import com.lamzone.mareu.model.Meeting;
 import com.lamzone.mareu.service.MeetingApiServiceInterface;
@@ -149,7 +144,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         binding.datePickerTextButton.setOnClickListener(this);
     }
 
-    private void dateDialog() {
+    private void displayDateDialog() {
         int selectedYear = Calendar.getInstance().get(Calendar.YEAR);
         int selectedMonth = Calendar.getInstance().get(Calendar.MONTH);
         int selectedDayOfMonth = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
@@ -166,6 +161,9 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         };
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog,
                 dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+
+        long currentTime = new Date().getTime();
+        datePickerDialog.getDatePicker().setMinDate(currentTime);
 
         datePickerDialog.show();
     }
@@ -187,7 +185,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
             }
         }
         if (v == binding.datePickerTextButton) {
-            dateDialog();
+            displayDateDialog();
         }
     }
 

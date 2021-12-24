@@ -10,12 +10,14 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.google.android.material.datepicker.CalendarConstraints;
 import com.lamzone.mareu.R;
 import com.lamzone.mareu.databinding.ActivityListMeetingBinding;
 import com.lamzone.mareu.di.DI;
@@ -26,8 +28,10 @@ import com.lamzone.mareu.service.MeetingApiServiceInterface;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ListMeetingActivity extends AppCompatActivity implements View.OnClickListener {
@@ -107,8 +111,12 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
                 dataChange();
             }
         };
+
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog,
                 dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+
+        long currentTime = new Date().getTime();
+        datePickerDialog.getDatePicker().setMinDate(currentTime);
 
         datePickerDialog.show();
     }
