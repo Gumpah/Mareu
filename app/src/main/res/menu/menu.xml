@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/filter_time"
-        android:title="@string/filtrer_date"
+    <item android:id="@+id/filter_by_date"
+        android:title="@string/filter_date"
         app:showAsAction="never" />
-    <item android:id="@+id/filter_place"
-        android:title="@string/filtrer_place"
+    <item android:id="@+id/filter_by_room"
+        android:title="@string/filter_room"
         app:showAsAction="never" />
     <item android:id="@+id/reset_filter"
         android:title="@string/remove_filter"

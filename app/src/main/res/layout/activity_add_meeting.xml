@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintlayout_addmeeting"
+    android:id="@+id/add_meeting_constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".view.AddMeetingActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_name"
+        android:id="@+id/name_textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +20,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textinput_name"
+            android:id="@+id/name_textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
@@ -29,19 +29,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/menu_chooseroom"
+        android:id="@+id/choose_room_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/room"
-        app:layout_constraintTop_toBottomOf="@id/textField_name"
+        app:layout_constraintTop_toBottomOf="@id/name_textInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
         android:textColor="@color/grey">
 
         <AutoCompleteTextView
-            android:id="@+id/textview_chooseroom"
+            android:id="@+id/choose_room_autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -51,12 +51,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/textButton_timepicker"
+        android:id="@+id/time_picker_textButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/menu_chooseroom"
+        app:layout_constraintTop_toBottomOf="@id/choose_room_textInputLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textButton_datepicker"
+        app:layout_constraintEnd_toStartOf="@id/date_picker_textButton"
         android:layout_margin="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -64,11 +64,11 @@
         />
 
     <Button
-        android:id="@+id/textButton_datepicker"
+        android:id="@+id/date_picker_textButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/menu_chooseroom"
-        app:layout_constraintStart_toEndOf="@id/textButton_timepicker"
+        app:layout_constraintTop_toBottomOf="@id/choose_room_textInputLayout"
+        app:layout_constraintStart_toEndOf="@id/time_picker_textButton"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="8dp"
         android:textColor="@color/white"
@@ -77,19 +77,19 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_addparticipant"
+        android:id="@+id/add_participant_textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="4dp"
         android:hint="@string/addparticipant"
-        app:layout_constraintTop_toBottomOf="@id/textButton_timepicker"
+        app:layout_constraintTop_toBottomOf="@id/time_picker_textButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_addparticipant"
+        app:layout_constraintEnd_toStartOf="@id/add_participant_btn"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textinput_mail"
+            android:id="@+id/add_participant_textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
@@ -98,29 +98,29 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
-        android:id="@+id/button_addparticipant"
+        android:id="@+id/add_participant_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tint="@color/white"
         app:srcCompat="@drawable/ic_baseline_add_24"
-        app:layout_constraintTop_toTopOf="@id/textField_addparticipant"
-        app:layout_constraintBottom_toBottomOf="@id/textField_addparticipant"
+        app:layout_constraintTop_toTopOf="@id/add_participant_textInputLayout"
+        app:layout_constraintBottom_toBottomOf="@id/add_participant_textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:backgroundTint="@color/blue"
         android:layout_marginEnd="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_participant"
-        android:layout_width="300dp"
+        android:id="@+id/show_participant_recyclerView"
+        android:layout_width="0dp"
         android:layout_height="332dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/textField_addparticipant"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_participant_textInputLayout"
+        app:layout_constraintStart_toStartOf="@id/add_participant_textInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/add_participant_textInputLayout"
         tools:listitem="@layout/fragment_participant" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/Button_create"
+        android:id="@+id/create_meeting_btn"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,10 +135,5 @@
         android:textColor="@color/white"
         android:text="@string/create_meeting"
         android:padding="12dp"/>
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

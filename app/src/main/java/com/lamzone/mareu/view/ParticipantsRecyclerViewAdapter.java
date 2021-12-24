@@ -7,17 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lamzone.mareu.R;
-import com.lamzone.mareu.events.DeleteMeetingEvent;
 import com.lamzone.mareu.events.DeleteParticipantEvent;
-import com.lamzone.mareu.model.Meeting;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ParticipantsRecyclerViewAdapter extends RecyclerView.Adapter<ParticipantsRecyclerViewAdapter.ViewHolder> {
@@ -40,10 +36,10 @@ public class ParticipantsRecyclerViewAdapter extends RecyclerView.Adapter<Partic
     @Override
     public void onBindViewHolder(ParticipantsRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.displayMeeting(mParticipants.get(position));
-        holder.delete_participant.setOnClickListener(new View.OnClickListener() {
+        holder.deleteParticipant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v == holder.delete_participant) {
+                if (v == holder.deleteParticipant) {
                     EventBus.getDefault().post(new DeleteParticipantEvent(position));
                 }
             }
@@ -58,17 +54,17 @@ public class ParticipantsRecyclerViewAdapter extends RecyclerView.Adapter<Partic
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView TextMail;
-        private final ImageButton delete_participant;
+        private final TextView participantMailTextView;
+        private final ImageButton deleteParticipant;
 
         public ViewHolder(View view) {
             super(view);
-            TextMail = itemView.findViewById(R.id.textview_participant);
-            delete_participant = itemView.findViewById(R.id.imagebutton_participantdelete);
+            participantMailTextView = itemView.findViewById(R.id.participant_mail_textView);
+            deleteParticipant = itemView.findViewById(R.id.delete_participant_btn);
         }
 
         public void displayMeeting(String participant) {
-            TextMail.setText(participant);
+            participantMailTextView.setText(participant);
         }
     }
 }

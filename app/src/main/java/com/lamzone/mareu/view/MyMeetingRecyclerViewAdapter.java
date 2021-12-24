@@ -1,7 +1,6 @@
 package com.lamzone.mareu.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lamzone.mareu.R;
-import com.lamzone.mareu.databinding.FragmentMeetingBinding;
 import com.lamzone.mareu.events.DeleteMeetingEvent;
 import com.lamzone.mareu.model.Meeting;
 
@@ -45,10 +42,10 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.displayMeeting(mMeetings.get(position));
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.deleteMeetingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v == holder.delete) {
+                if (v == holder.deleteMeetingBtn) {
                     EventBus.getDefault().post(new DeleteMeetingEvent(mMeetings.get(position)));
                 }
             }
@@ -64,30 +61,32 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView mImageView;
-        private final TextView firstline;
-        private final TextView secondline;
-        private final ImageButton delete;
+        private final ImageView meetingIconImageView;
+        private final TextView meetingFirstLineTextView;
+        private final TextView meetingSecondLineTextView;
+        private final ImageButton deleteMeetingBtn;
         private Meeting mymeeting;
+        private String roomPrefix;
 
         public ViewHolder(View view) {
             super(view);
-            mImageView = itemView.findViewById(R.id.imageview_meeting);
-            firstline = itemView.findViewById(R.id.TextView_firstline);
-            secondline = itemView.findViewById(R.id.TextView_secondline);
-            delete = itemView.findViewById(R.id.imagebutton_deletebutton);
+            meetingIconImageView = itemView.findViewById(R.id.meeting_icon_imageView);
+            meetingFirstLineTextView = itemView.findViewById(R.id.meeting_firstLine_textView);
+            meetingSecondLineTextView = itemView.findViewById(R.id.meeting_secondLine_textView);
+            deleteMeetingBtn = itemView.findViewById(R.id.delete_meeting_btn);
+            roomPrefix = view.getResources().getString(R.string.room_prefix);
         }
 
         public void displayMeeting(Meeting meeting) {
             mymeeting = meeting;
-            firstline.setText(getFirstLine(meeting));
-            secondline.setText(getSecondLine(meeting));
-            mImageView.setColorFilter(meeting.getColor());
+            meetingFirstLineTextView.setText(getFirstLine(meeting));
+            meetingSecondLineTextView.setText(getSecondLine(meeting));
+            meetingIconImageView.setColorFilter(meeting.getColor());
         }
 
         public String getFirstLine(Meeting meeting) {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
-            String firstLine = meeting.getName() + " - " + dateFormat.format(meeting.getDate()) + " " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + "Salle " + meeting.getRoom();
+            String firstLine = meeting.getName() + " - " + dateFormat.format(meeting.getDate()) + " " + String.format(Locale.getDefault(), "%02dh%02d", meeting.getHours(), meeting.getMinutes()) + " - " + roomPrefix + " " + meeting.getRoom();
             return firstLine;
         }
 

@@ -7,7 +7,18 @@
     <string name="create_meeting">Créer</string>
     <string name="addmeeting_title">Créer une réunion</string>
     <string name="addparticipant">Entrer une adresse mail</string>
-    <string name="filtrer_date">Filtrer par date</string>
-    <string name="filtrer_place">Filtrer par salle</string>
+    <string name="filter_date">Filtrer par date</string>
+    <string name="filter_room">Filtrer par salle</string>
     <string name="remove_filter">Enlever le filtre</string>
+    <string name="name_empty_error">Veuillez entrer le nom de la réunion</string>
+    <string name="no_room_selected_error">Veuillez choisir un lieu</string>
+    <string name="mail_empty_error">Une adresse mail ne peut pas être vide</string>
+    <string name="mail_with_spaces_error">Une adresse mail ne peut pas contenir d\'espaces</string>
+    <string name="no_participant_error">Au moins un participant requis</string>
+    <string name="no_date_selected_error">Veuillez sélectionner une date</string>
+    <string name="meeting_created">Réunion créée</string>
+    <string name="pick_room">Choisissez une salle</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="room_prefix">Salle</string>
 </resources>

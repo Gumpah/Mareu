@@ -1,12 +1,16 @@
 package com.lamzone.mareu.utils;
 
+import androidx.annotation.IdRes;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import android.view.View;
 
 import com.lamzone.mareu.R;
 
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 public class ClickViewAction {
 
@@ -31,5 +35,7 @@ public class ClickViewAction {
             }
         };
     }
+
+
 
 }

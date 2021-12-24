@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageview_meeting"
+        android:id="@+id/meeting_icon_imageView"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_marginStart="12dp"
@@ -21,43 +21,43 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageview_meeting"
-        app:layout_constraintTop_toTopOf="@+id/imageview_meeting"
-        app:layout_constraintStart_toEndOf="@id/imageview_meeting"
+        app:layout_constraintBottom_toBottomOf="@+id/meeting_icon_imageView"
+        app:layout_constraintTop_toTopOf="@+id/meeting_icon_imageView"
+        app:layout_constraintStart_toEndOf="@id/meeting_icon_imageView"
         android:layout_marginStart="12dp"
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/TextView_firstline"
+            android:id="@+id/meeting_firstLine_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/TextView_secondline"
+            android:id="@+id/meeting_secondLine_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:ellipsize="end"
             android:maxLines="1"
             android:maxWidth="240dp"
-            android:layout_below="@id/TextView_firstline"
+            android:layout_below="@id/meeting_firstLine_textView"
             app:layout_constraintStart_toStartOf="parent"/>
 
     </RelativeLayout>
 
 
     <ImageButton
-        android:id="@+id/imagebutton_deletebutton"
+        android:id="@+id/delete_meeting_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/imageview_meeting"
-        app:layout_constraintTop_toTopOf="@+id/imageview_meeting"
+        app:layout_constraintBottom_toBottomOf="@+id/meeting_icon_imageView"
+        app:layout_constraintTop_toTopOf="@+id/meeting_icon_imageView"
         app:srcCompat="@drawable/ic_baseline_delete_24"
         android:contentDescription="TODO" />
 

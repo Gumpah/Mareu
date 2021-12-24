@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ListMeetingActivity"
-    android:id="@+id/constraintlayout_listmeetings"
+    android:id="@+id/list_meeting_constraintLayout"
     android:background="@color/white">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/show_meetings_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/fragment_meeting"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/Button_newmeeting"
+        android:id="@+id/new_meeting_btn"
         app:backgroundTint="@color/app_red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

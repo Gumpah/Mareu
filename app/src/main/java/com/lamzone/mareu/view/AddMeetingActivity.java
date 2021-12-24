@@ -54,7 +54,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setTimePicker() {
-        binding.textButtonTimepicker.setOnClickListener(new View.OnClickListener() {
+        binding.timePickerTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openTimePicker();
@@ -74,14 +74,14 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
                 .setTimeFormat(clockFormat)
                 .setHour(12)
                 .setMinute(0)
-                .setTitleText("Définir l'heure")
+                .setTitleText(getResources().getString(R.string.time_define))
                 .build();
         picker.show(getSupportFragmentManager(), "fragment_tag");
 
         picker.addOnPositiveButtonClickListener(dialog -> {
             hours = picker.getHour();
             minutes = picker.getMinute();
-            binding.textButtonTimepicker.setText(String.format(Locale.getDefault(), "%02d:%02d", hours, minutes));
+            binding.timePickerTextButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hours, minutes));
         });
     }
 
@@ -90,7 +90,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        binding.textButtonTimepicker.setText(String.format(Locale.getDefault(), "%02d:%02d", hours, minutes));
+        binding.timePickerTextButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hours, minutes));
         setTimePicker();
         setDateButton();
         setButtonCreate();
@@ -101,41 +101,41 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.recyclerviewParticipant.setLayoutManager(layoutManager);
+        binding.showParticipantRecyclerView.setLayoutManager(layoutManager);
         ParticipantsRecyclerViewAdapter ParticipantsRecyclerViewAdapter = new ParticipantsRecyclerViewAdapter(mParticipants, this);
-        binding.recyclerviewParticipant.setAdapter(ParticipantsRecyclerViewAdapter);
+        binding.showParticipantRecyclerView.setAdapter(ParticipantsRecyclerViewAdapter);
     }
 
     private void setButtonCreate() {
-        binding.ButtonCreate.setOnClickListener(this);
+        binding.createMeetingBtn.setOnClickListener(this);
     }
 
     private void setButtonAddParticipant() {
-        binding.buttonAddparticipant.setOnClickListener(this);
+        binding.addParticipantBtn.setOnClickListener(this);
     }
 
     private void onSubmit() {
-        String name = binding.textFieldName.getEditText().getText().toString();
-        room = binding.textviewChooseroom.getText().toString();
+        String name = binding.nameTextInputLayout.getEditText().getText().toString();
+        room = binding.chooseRoomAutoCompleteTextView.getText().toString();
 
         if (name.isEmpty()) {
-            binding.textFieldName.setError("Veuillez entrer le nom de la réunion");
+            binding.nameTextInputLayout.setError(getResources().getString(R.string.name_empty_error));
             return;
         }
         if (room.isEmpty()) {
-            binding.menuChooseroom.setError("Veuillez choisir un lieu");
+            binding.chooseRoomTextInputLayout.setError(getResources().getString(R.string.no_room_selected_error));
             return;
         }
         if (mParticipants.isEmpty()) {
-            binding.textFieldAddparticipant.setError("Au moins un participant requis");
+            binding.addParticipantTextInputLayout.setError(getResources().getString(R.string.no_participant_error));
             return;
         }
         if (date == null) {
-            Toast.makeText(this, "Veuillez sélectionner une date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.no_date_selected_error), Toast.LENGTH_SHORT).show();
             return;
         }
         mApiService.createMeeting(new Meeting(name,room,hours,minutes, mParticipants, generateColor(hours), date));
-        Toast.makeText(this, "Réunion créée", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.meeting_created), Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -146,7 +146,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setDateButton() {
-        binding.textButtonDatepicker.setOnClickListener(this);
+        binding.datePickerTextButton.setOnClickListener(this);
     }
 
     private void dateDialog() {
@@ -161,7 +161,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
                 cal.set(year, month, dayOfMonth);
                 date = cal.getTime();
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
-                binding.textButtonDatepicker.setText(dateFormat.format(date));
+                binding.datePickerTextButton.setText(dateFormat.format(date));
             }
         };
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog,
@@ -172,28 +172,28 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        if (v == binding.ButtonCreate) {
+        if (v == binding.createMeetingBtn) {
             onSubmit();
         }
-        if (v == binding.buttonAddparticipant) {
-            if (binding.textFieldAddparticipant.getEditText().getText().toString().isEmpty()) {
-                binding.textFieldAddparticipant.setError("Une adresse mail ne peut pas être vide");
-            } else if (binding.textFieldAddparticipant.getEditText().getText().toString().contains(" ")) {
-                binding.textFieldAddparticipant.setError("Une adresse mail ne peut pas contenir d'espaces");
+        if (v == binding.addParticipantBtn) {
+            if (binding.addParticipantTextInputLayout.getEditText().getText().toString().isEmpty()) {
+                binding.addParticipantTextInputLayout.setError(getResources().getString(R.string.mail_empty_error));
+            } else if (binding.addParticipantTextInputLayout.getEditText().getText().toString().contains(" ")) {
+                binding.addParticipantTextInputLayout.setError(getResources().getString(R.string.mail_with_spaces_error));
             } else {
-                mParticipants.add(binding.textFieldAddparticipant.getEditText().getText().toString());
-                binding.textFieldAddparticipant.getEditText().getText().clear();
+                mParticipants.add(binding.addParticipantTextInputLayout.getEditText().getText().toString());
+                binding.addParticipantTextInputLayout.getEditText().getText().clear();
                 initRecyclerView();
             }
         }
-        if (v == binding.textButtonDatepicker) {
+        if (v == binding.datePickerTextButton) {
             dateDialog();
         }
     }
 
     private void setRoomMenu(List<String> list) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, list);
-        binding.textviewChooseroom.setAdapter(adapter);
+        binding.chooseRoomAutoCompleteTextView.setAdapter(adapter);
     }
 
     @Override
