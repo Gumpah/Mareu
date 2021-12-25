@@ -11,6 +11,8 @@ public interface MeetingApiServiceInterface {
 
     List<Meeting> getMeetings();
 
+    void resetMeetings();
+
     void deleteMeeting(Meeting meeting);
 
     void createMeeting(Meeting meeting);

@@ -55,6 +55,8 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
 
     private void initData() { mMeetingList = new ArrayList<>(mApiService.getMeetings()); }
 
+    private void resetData() { mApiService.resetMeetings(); }
+
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.showMeetingsRecyclerView.setLayoutManager(layoutManager);
@@ -68,6 +70,7 @@ public class ListMeetingActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        resetData();
         initData();
         initUI();
     }

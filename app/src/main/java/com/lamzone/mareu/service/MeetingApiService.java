@@ -24,6 +24,11 @@ public class MeetingApiService implements MeetingApiServiceInterface {
     }
 
     @Override
+    public void resetMeetings() {
+        meetings = MeetingGenerator.generateMeetings();
+    }
+
+    @Override
     public void deleteMeeting(Meeting meeting) {
         meetings.remove(meeting);
 
