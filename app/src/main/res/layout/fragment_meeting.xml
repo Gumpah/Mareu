@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="76dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/meeting_container"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/meeting_icon_imageView"
@@ -16,20 +20,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/meeting_icon_imageView_desc" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/meeting_icon_imageView"
         app:layout_constraintTop_toTopOf="@+id/meeting_icon_imageView"
         app:layout_constraintStart_toEndOf="@id/meeting_icon_imageView"
-        android:layout_marginStart="12dp"
+        app:layout_constraintEnd_toStartOf="@id/delete_meeting_btn"
+        android:layout_marginHorizontal="12dp"
         android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/meeting_firstLine_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -37,12 +42,11 @@
 
         <TextView
             android:id="@+id/meeting_secondLine_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:maxWidth="240dp"
             android:layout_below="@id/meeting_firstLine_textView"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -59,7 +63,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/meeting_icon_imageView"
         app:layout_constraintTop_toTopOf="@+id/meeting_icon_imageView"
         app:srcCompat="@drawable/ic_baseline_delete_24"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/delete_meeting_btn_desc" />
 
 
 

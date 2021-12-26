@@ -21,4 +21,10 @@
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
     <string name="room_prefix">Salle</string>
+    <string name="delete_meeting_btn_desc">Suppression d\'un meeting</string>
+    <string name="meeting_icon_imageView_desc">Icône du meeting</string>
+    <string name="delete_participant_btn_desc">Suppression d\'un participant</string>
+    <string name="new_meeting_btn_desc">Ouvrir la page de création de meeting</string>
+    <string name="add_participant_btn_desc">Ajout d\'un participant</string>
+    <string name="dialog_participants_title">Liste des participants</string>
 </resources>

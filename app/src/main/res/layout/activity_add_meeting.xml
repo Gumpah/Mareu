@@ -33,7 +33,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/room"
         app:layout_constraintTop_toBottomOf="@id/name_textInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
+            android:hint="@string/room"
             android:textColor="@color/grey"
             />
 
@@ -107,7 +107,8 @@
         app:layout_constraintBottom_toBottomOf="@id/add_participant_textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:backgroundTint="@color/blue"
-        android:layout_marginEnd="4dp"/>
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/add_participant_btn_desc" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/show_participant_recyclerView"
