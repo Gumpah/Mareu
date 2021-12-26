@@ -16,7 +16,15 @@ public abstract class MeetingGenerator {
             "rogers.wisozk@gmail.com",
             "rafael.smitham@gmail.com",
             "mmarquardt@hotmail.com",
-            "koelpin.cordelia@langosh.info");
+            "koelpin.cordelia@langosh.info",
+            "price.granville@gmail.com",
+            "hodkiewicz.ransom@gmail.com",
+            "cquigley@yahoo.com",
+            "jeramie51@hotmail.com",
+            "qwaelchi@gmail.com",
+            "smith.frederik@yahoo.com",
+            "lwilderman@gmail.com",
+            "joconnell@hotmail.com");
 
     public static List<Meeting> meetings = Arrays.asList(
             new Meeting("Réunion A", "3", 15, 30, maillist, -5261361, Calendar.getInstance().getTime()),

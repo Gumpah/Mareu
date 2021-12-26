@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="meetingIcon_width">60dp</dimen>
+    <dimen name="meetingIcon_height">60dp</dimen>
+    <dimen name="fragment_mainText_size">25sp</dimen>
+    <dimen name="fragment_subText_size">24sp</dimen>
+</resources>
