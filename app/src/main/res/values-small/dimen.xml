@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="meetingIcon_width">38dp</dimen>
-    <dimen name="meetingIcon_height">38dp</dimen>
-    <dimen name="fragment_mainText_size">15sp</dimen>
-    <dimen name="fragment_subText_size">14sp</dimen>
+    <dimen name="meetingIcon_width">28dp</dimen>
+    <dimen name="meetingIcon_height">28dp</dimen>
+    <dimen name="fragment_mainText_size">10sp</dimen>
+    <dimen name="fragment_subText_size">9sp</dimen>
+    <dimen name="main_margin_horizontal">4dp</dimen>
+    <dimen name="main_margin_vertical">4dp</dimen>
+    <dimen name="inter_margin_horizontal">4dp</dimen>
+    <dimen name="inter_margin_vertical">4dp</dimen>
+    <dimen name="create_margin_top">4dp</dimen>
+    <dimen name="create_padding">4dp</dimen>
 </resources>

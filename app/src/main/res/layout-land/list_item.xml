@@ -8,4 +8,4 @@
     android:maxLines="1"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     android:textColor="@color/grey"
-    android:textSize="@dimen/fragment_subText_size" />
+    android:textSize="@dimen/fragment_mainText_size" />
