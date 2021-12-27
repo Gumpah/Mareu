@@ -106,6 +106,7 @@ public class MeetingsInstrumentedTest {
         onView(withId(R.id.date_picker_textButton)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.add_participant_btn)).perform(click());
+        pressBack();
         onView(withId(R.id.create_meeting_btn)).perform(click());
         onView(withId(R.id.list_meeting_constraintLayout)).check(matches(isDisplayed()));
         onView(withId(R.id.show_meetings_recyclerView)).check(withItemCount(itemsCount+1));
@@ -129,6 +130,7 @@ public class MeetingsInstrumentedTest {
         onView(withId(R.id.date_picker_textButton)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.add_participant_btn)).perform(click());
+        pressBack();
         onView(withId(R.id.create_meeting_btn)).perform(click());
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText(R.string.filter_date)).perform(click());
@@ -154,6 +156,7 @@ public class MeetingsInstrumentedTest {
         onView(withId(R.id.date_picker_textButton)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.add_participant_btn)).perform(click());
+        pressBack();
         onView(withId(R.id.create_meeting_btn)).perform(click());
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText(R.string.filter_room)).perform(click());
