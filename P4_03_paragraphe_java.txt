@@ -1,0 +1,15 @@
+Madame, Monsieur,
+
+Il m’a été demandé de rédiger un paragraphe afin d’expliquer mon choix du langage Java pour le développement de l’application Maréu, veuillez trouver ce paragraphe ci-dessous.
+
+Java est un vieux langage. Bien qu’à premier abord ce fait peut sembler péjoratif, il apporte cependant 2 avantages :
+- Une communauté étendue
+- De nombreuses solutions et librairies disponibles
+
+L’utilisation de Java permet également une maintenance plus facile de l’application. Le langage étant largement connu dans le monde du développement, il est ainsi plutôt simple de trouver un développeur pouvant travailler sur l’application, et maîtrisant le langage.
+
+L’application n’étant pas d’une grande complexité, je préfère la reposer sur un langage qui a su faire ses preuves, et qui promet un avenir durable dû à l’ampleur de son utilisation.
+
+Java a une très bonne gestion de la mémoire, grâce au stockage des objets dans un tas et à l’élimination des déchets, il rend les applications plus optimisées et plus performantes.
+
+Enfin, la portabilité de Java nous permet de réutiliser le code pour une autre plateforme, très intéressant si nous souhaitons par la suite apporter l’application sur un support différent.
