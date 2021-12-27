@@ -35,7 +35,7 @@ import java.util.Locale;
 public class AddMeetingActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityAddMeetingBinding binding;
-    private MeetingApiServiceInterface mApiService = DI.getMeetingApiService();
+    MeetingApiServiceInterface mApiService;
     private int hours = 12;
     private int minutes = 0;
     private List<String> mParticipants = new ArrayList<>();
@@ -45,6 +45,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mApiService = DI.getMeetingApiService();
         initUI();
     }
 

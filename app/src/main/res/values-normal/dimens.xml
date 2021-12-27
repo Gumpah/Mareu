@@ -10,5 +10,6 @@
     <dimen name="inter_margin_vertical">8dp</dimen>
     <dimen name="create_margin_top">8dp</dimen>
     <dimen name="create_padding">12dp</dimen>
-
+    <dimen name="participant_recyclerView_height">300dp</dimen>
+    <dimen name="participant_recyclerView_height_land">200dp</dimen>
 </resources>
